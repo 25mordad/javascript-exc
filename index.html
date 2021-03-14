@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Javascript Exercise</h1>
+
+<p>This is my homework!</p>
+<!--
+<div class="image">
+  <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="First">
+  <button class="remove">X</button>
+</div>
+<div class="image">
+  <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Second">
+  <button class="remove">X</button>
+</div> -->
+
+
+
+<!--
+<div id='numbers'>
+ <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+ <button id='btn' onclick='toggleEvenColor()'>Toggle even number highlighting</button>
+</div> -->
+
+</body>
+</html>
+
+
+<script>
+
+
+
+
+
+
+
+function myshifty(str, shiftleft, shiftright){
+
+  let totalshift = shiftleft - shiftright;
+  if (totalshift == 0){
+    return str;
+  }else{
+
+    let arr = str.split("");
+    console.log(arr);
+
+    if (totalshift < 0){
+      //right
+      console.log("right" , Math.abs(totalshift));
+      for (i=1 ; i<= Math.abs(totalshift) ; i++){
+        popchar = arr.pop();
+        arr.unshift(popchar);
+        console.log(arr);
+      }
+      return (arr.join(""));
+    }else{
+      //left
+      console.log("left" , totalshift);
+      for (i=1 ; i<=totalshift ; i++){
+        shiftchar = arr.shift();
+        arr.push(shiftchar);
+        console.log(arr);
+      }
+      return (arr.join(""));
+
+      //
+    }
+
+  }
+
+
+  // console.log(arr.shift());
+  // console.log(arr);
+
+  console.log(str, shiftleft, shiftright);
+}
+
+blabla = myshifty("abcdef", 0 , 3); //bcdefa
+console.log(blabla);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// function minimumtimereq(arr , p){
+//
+//   let max
+//   let index
+//   let new_num
+//   let sum = 0
+//
+//   console.log(arr);
+//   while (true) {
+//
+//
+//     max = Math.max(...arr);
+//     if(p-max < 0){
+//
+//       break;
+//     }
+//     index = arr.indexOf(Math.max(...arr));
+//     new_num = Math.floor(max/2);
+//
+//     arr[index] = new_num;
+//     p = p-max;
+//     sum++;
+//     console.log(arr,p,sum);
+//     console.log(max,index,new_num);
+//     console.log("---------------------------");
+//     console.log(sum+1);
+//     console.log("---------------------------");
+//
+//
+//   }
+//
+// }
+//
+// minimumtimereq([3,1,7,2,4],16)
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// class Book {
+//   constructor(n,p,a) {
+//     this.name = n;
+//     this.price = p;
+//     this.author = a;
+//   }
+//
+//
+// }
+//
+// function removeProperty(obj, prop) {
+//
+//   const flag = obj.hasOwnProperty(prop);
+//
+//   if (flag){
+//     delete obj[prop];
+//   }
+//
+//   return flag;
+// }
+//
+// let haryp = new Book("Harry Potter",220,"J.K");
+// let shah = new Book("Shahname",67000,"Ferdowsi");
+//
+// console.log(haryp);
+// // console.log(haryp);
+// // console.log(shah);
+// const newhary = removeProperty(haryp,"price");
+// console.log(haryp);
+// console.log(newhary);
+
+
+   // function toggleEvenColor() {
+   //   let spanElements = document.querySelectorAll('#numbers span:nth-child(2n)');
+   //   spanElements.forEach(function(item, index) {
+   //     item.style.backgroundColor = item.style.backgroundColor !== 'yellow' ? 'yellow' : 'transparent';
+   //   });
+   // }
+   //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function setup(){
+
+  let x = document.querySelectorAll(".image");
+
+  for(let i=0 ; i < x.length ; i++){
+    x[i].id = "img-"+i;
+    btn = x[i].querySelector("button");
+    btn.id = "btn-"+i;
+    btn.title = "btn-"+i;
+    btn.setAttribute( "onclick", "document.getElementById('img-"+i+"').remove()")
+
+    // console.log(btn);
+  }
+
+  // console.log(x.length);
+  // console.log(x);
+
+}
+
+// setup();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function reductionCost(num) {
+    // Write your code here
+
+    // cost1 = num[0] + num[1];
+    let sum = 0;
+    while (num.length > 1){
+		console.log(sum);
+        sum += num[0] + num[1];
+        num.push(num[0] + num[1]);
+        num.shift(0);
+        num.shift(0);
+
+    }
+    console.log(sum);
+
+    return(sum);
+}
+
+
+function getShiftedString(s, leftShifts, rightShifts) {
+    // Write your code here
+
+	let firstchar;
+	let lastchar;
+
+	for (let i=1 ; i<=leftShifts ; ++i ){
+		firstchar = s.charAt(0);
+		s = s.substring(1) + firstchar;
+	}
+
+	let strlen = s.length-1;
+	for (let j=1 ; j<=rightShifts ; ++j ){
+		lastchar = s.charAt(strlen);
+		console.log(lastchar);
+		s = lastchar + s.slice(0, -1) ;
+	}
+
+
+
+
+
+
+    console.log(s);
+}
+
+// reductionCost([4,1,2,3,4]);
+
+// getShiftedString("abcd" , 2,2);
+//
+//
+//
+
+
+function createCheckDigit(membershipId) {
+  // Write the code that goes here.
+
+  let digits = membershipId.split("");
+  digits = digits.map(a => parseInt(a));
+  let digit = digits.reduce( (a,b) => (a+b) );
+  console.log("inja",digit)
+  if (digit > 10) {
+      digit = createCheckDigit(digit.toString());
+    console.log("Mary",digit)
+  }
+
+  return digit;
+
+
+
+}
+
+
+
+function ensure(value) {
+
+  try{
+    if (typeof value === 'undefined'){
+      throw "error";
+    }
+
+    console.log(value);
+
+  }catch(err){
+    return err;
+  }
+
+  return value;
+}
+
+// rt = ensure();
+// console.log(rt);
+</script>
